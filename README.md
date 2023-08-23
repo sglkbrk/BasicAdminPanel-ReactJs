@@ -1,3 +1,7 @@
+# React Admin Panel Örneği
+
+Bu proje, React, TypeScript ve Material-UI kullanılarak geliştirilen basit bir admin paneli örneğini içerir.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
