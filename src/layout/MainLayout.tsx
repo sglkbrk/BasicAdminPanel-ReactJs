@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, CssBaseline, useMediaQuery } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import TopBar from './topBar';
+import TopBar from './Header';
 import Sidebar from './sideBar/Sidebar';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { useTheme } from '@mui/material/styles';

@@ -37,10 +37,6 @@ const Sidebar: React.FC<SidebarProps> = ({ drawerOpen, drawerToggle }) => {
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
   const container = window !== undefined ? () => window.document.body : undefined;
 
-  // const openPage = (item: menuItemschildren) => {
-  //   history(item.url);
-  // };
-
   return (
     <Drawer
       container={container}
