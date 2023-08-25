@@ -3,7 +3,6 @@ import { Box, Toolbar, AppBar } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useTheme } from '@mui/material/styles';
 import ProfileMenu from './ProfileMenu';
@@ -41,15 +40,6 @@ const TopBar: React.FC<Props> = ({ drawerToggle }) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl2(anchorEl2 ? null : event.currentTarget);
-  };
-
-  const openNotifications = Boolean(anchorEl2);
-  const id: any = openNotifications ? 'simple-popper' : undefined;
-
   const menuId = 'primary-search-account-menu';
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const theme = useTheme();
@@ -79,16 +69,7 @@ const TopBar: React.FC<Props> = ({ drawerToggle }) => {
           <Search></Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              aria-describedby={id}
-              size="large"
-              onClick={handleClick}
-              aria-label="show 17 new notifications"
-              sx={{ backgroundColor: theme.palette.secondary.light, borderRadius: 3, padding: 1.2, marginLeft: 2 }}
-              color="secondary"
-            >
-              <NotificationsIcon fontSize="small" />
-            </IconButton>
+            <Notifications />
             <IconButton
               sx={{ backgroundColor: theme.palette.secondary.light, borderRadius: 3, padding: 1.2, marginLeft: 2 }}
               size="large"
@@ -117,8 +98,6 @@ const TopBar: React.FC<Props> = ({ drawerToggle }) => {
         </Toolbar>
       </Box>
       <MobileMenu
-        notificationsMenuid={id}
-        openNotificationsMenu={handleClick}
         mobileMenuId={mobileMenuId}
         mobileMoreAnchorEl={mobileMoreAnchorEl}
         isMobileMenuOpen={isMobileMenuOpen}
@@ -126,7 +105,6 @@ const TopBar: React.FC<Props> = ({ drawerToggle }) => {
         handleProfileMenuOpen={handleProfileMenuOpen}
       />
       <ProfileMenu menuId={menuId} anchorEl={anchorEl} isMenuOpen={isMenuOpen} handleMenuClose={handleMenuClose} />
-      <Notifications id={id} open={openNotifications} anchorEl={anchorEl2} />
     </AppBar>
   );
 };

@@ -5,7 +5,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 
 interface Props {
   mobileMenuId: string;
@@ -13,17 +12,13 @@ interface Props {
   isMobileMenuOpen: boolean;
   handleMobileMenuClose: () => void;
   handleProfileMenuOpen: any;
-  openNotificationsMenu: any;
-  notificationsMenuid: any;
 }
 const MobileMenu: React.FC<Props> = ({
   mobileMenuId,
   mobileMoreAnchorEl,
   isMobileMenuOpen,
   handleMobileMenuClose,
-  handleProfileMenuOpen,
-  openNotificationsMenu,
-  notificationsMenuid
+  handleProfileMenuOpen
 }) => {
   return (
     <Menu
@@ -49,7 +44,7 @@ const MobileMenu: React.FC<Props> = ({
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton
           aria-describedby={notificationsMenuid}
           onClick={openNotificationsMenu}
@@ -62,7 +57,7 @@ const MobileMenu: React.FC<Props> = ({
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
