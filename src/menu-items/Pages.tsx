@@ -4,7 +4,7 @@ import IconListDetails from '@mui/icons-material/DashboardOutlined';
 const Pages = {
   id: 'pages',
   title: 'Pages',
-  caption: 'pages caption',
+  caption: '',
   children: [
     {
       id: 'pages1',

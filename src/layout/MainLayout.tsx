@@ -36,6 +36,7 @@ const MainLayout: React.FC = () => {
             overflow: 'auto',
             borderRadius: 6,
             padding: 2.5,
+            margin: 1,
             border: 'none',
             backgroundColor: theme.palette.grey[100],
             marginTop: '89px'
