@@ -7,7 +7,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import { Link } from 'react-router-dom';
 
 import menuItems from '../../menu-items';
-const myStyles = {
+const linkStyle = {
   backgroundColor: 'secondary',
   '&:hover': {
     backgroundColor: 'secondary'
@@ -65,11 +65,11 @@ const Sidebar: React.FC<SidebarProps> = ({ drawerOpen, drawerToggle }) => {
             <ListItem key={row.id} sx={{ marginBottom: -1.5 }}>
               <Box sx={{ width: '100%' }}>
                 <Typography variant="inherit">{row.title}</Typography>
-                <Typography variant="caption">Tab Alt Metin</Typography>
+                {row.caption && <Typography variant="caption">{row.caption}</Typography>}
                 <Box sx={{ padding: 0.3 }}></Box>
                 <List>
                   {row.children.map((item: menuItemschildren, index: number) => (
-                    <ListItem button key={item.title} component={Link} to={item.url} sx={myStyles}>
+                    <ListItem button key={item.title} component={Link} to={item.url} sx={linkStyle}>
                       <ListItemIcon sx={{ color: 'gray', marginRight: 0, width: '1.3rm', marginLeft: 0.5 }}>
                         {index % 2 === 0 ? <InboxIcon /> : <IconListDetails />}
                       </ListItemIcon>

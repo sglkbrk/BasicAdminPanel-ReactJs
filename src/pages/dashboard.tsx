@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MainCard from '../components/cards/MainCard';
 
 const Home: React.FC = () => {
   const [color, setColor] = useState<string>('black');
@@ -9,12 +10,15 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 style={{ color }}>Home Dashboard Sayfası</h1>
-        <button onClick={changeColor}>Renk Değiştir</button>
-      </header>
-    </div>
+    <MainCard title="Home Dashboard Sayfası">
+      <div className="App">
+        <header className="App-header">
+          <h1 style={{ color }}>React Home Sayfası</h1>
+
+          <button onClick={changeColor}>Renk Değiştir</button>
+        </header>
+      </div>
+    </MainCard>
   );
 };
 

@@ -1,12 +1,11 @@
 import React from 'react';
-import { Box, Toolbar, AppBar } from '@mui/material';
+import { Box, Toolbar, AppBar, useMediaQuery } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MoreIcon from '@mui/icons-material/MoreVert';
+
 import { useTheme } from '@mui/material/styles';
 import ProfileMenu from './ProfileMenu';
-import MobileMenu from './MobileMenu';
 import Search from './Search';
 import Logo from './Logo';
 
@@ -17,32 +16,17 @@ interface Props {
 }
 
 const TopBar: React.FC<Props> = ({ drawerToggle }) => {
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
-
+  const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
   const handleMenuClose = () => {
     setAnchorEl(null);
-    handleMobileMenuClose();
   };
-
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
   const menuId = 'primary-search-account-menu';
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const theme = useTheme();
   return (
     <AppBar
       enableColorOnDark
@@ -68,42 +52,27 @@ const TopBar: React.FC<Props> = ({ drawerToggle }) => {
           </IconButton>
           <Search></Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <Notifications />
-            <IconButton
-              sx={{ backgroundColor: theme.palette.secondary.light, borderRadius: 3, padding: 1.2, marginLeft: 2 }}
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="secondary"
-            >
-              <AccountCircle fontSize="small" />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="secondary"
-            >
-              <MoreIcon fontSize="small" />
-            </IconButton>
-          </Box>
+          <Notifications />
+          <IconButton
+            sx={{
+              backgroundColor: theme.palette.secondary.light,
+              borderRadius: 3,
+              padding: 1.2,
+              marginLeft: matchesXs ? 1 : 2,
+              marginRight: matchesXs ? 1 : 0
+            }}
+            size="large"
+            edge="end"
+            aria-label="account of current user"
+            aria-controls={menuId}
+            aria-haspopup="true"
+            onClick={handleProfileMenuOpen}
+            color="secondary"
+          >
+            <AccountCircle fontSize="small" />
+          </IconButton>
         </Toolbar>
       </Box>
-      <MobileMenu
-        mobileMenuId={mobileMenuId}
-        mobileMoreAnchorEl={mobileMoreAnchorEl}
-        isMobileMenuOpen={isMobileMenuOpen}
-        handleMobileMenuClose={handleMobileMenuClose}
-        handleProfileMenuOpen={handleProfileMenuOpen}
-      />
       <ProfileMenu menuId={menuId} anchorEl={anchorEl} isMenuOpen={isMenuOpen} handleMenuClose={handleMenuClose} />
     </AppBar>
   );

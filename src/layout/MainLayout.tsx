@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, CssBaseline, useMediaQuery } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import TopBar from './Header';
-import Sidebar from './sideBar/Sidebar';
+import Sidebar from './SideBar';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { useTheme } from '@mui/material/styles';
 const MainLayout: React.FC = () => {
@@ -29,16 +29,15 @@ const MainLayout: React.FC = () => {
         {drawerOpenFull && <Sidebar drawerOpen={drawerOpen} drawerToggle={handleLeftDrawerToggle} />}
         <Box
           sx={{
-            height: '100%',
+            height: '96vh',
             display: 'flex',
             flexDirection: 'column',
             width: '100%',
             overflow: 'auto',
-            borderRadius: '24px',
-            padding: 3,
-            margin: 1,
+            borderRadius: 6,
+            padding: 2.5,
             border: 'none',
-            backgroundColor: '#eef2f6',
+            backgroundColor: theme.palette.grey[100],
             marginTop: '89px'
           }}
         >
